@@ -7,7 +7,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: 
+        linear-gradient(rgba(30,30,30,0.6), rgba(30,30,30,0.6)),
+        url('../img/Estudio.jpeg') no-repeat center center fixed;
+    background-size: cover;
     color: #222;
     line-height: 1.6;
 }
@@ -90,11 +93,78 @@ footer {
 }
 
 .nombre-principal {
-    color: #90caf9; /* Azul claro, puedes ajustar el color si lo prefieres */
+    color: #ececec; 
     text-shadow: 1px 1px 4px #222;
 }
 
-/* Diseño responsivo */
+.foto-principal {
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 4px solid #2196f3;
+    position: relative;
+    z-index: 2;
+}
+
+/* GRID para intereses */
+.grid-intereses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* Para que las subcajas ocupen bien el grid */
+.grid-intereses .subcaja {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* POSITION para la imagen principal */
+.foto-principal {
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 4px solid #2196f3;
+    position: relative;
+    z-index: 2;
+}
+
+/* Opcional: un marco decorativo detrás usando position */
+.subcaja {
+    position: relative;
+}
+.foto-principal::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(33,150,243,0.08);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsividad para grid e imagen */
+@media (max-width: 900px) {
+    .grid-intereses {
+        grid-template-columns: 1fr;
+    }
+}
 @media (max-width: 600px) {
     main {
         padding: 10px;
@@ -119,4 +189,40 @@ footer {
         font-size: 0.9em;
         padding: 10px 0;
     }
+    .foto-principal {
+        width: 110px;
+        height: 110px;
+    }
+    .foto-principal::after {
+        width: 130px;
+        height: 130px;
+        top: 10px;
+    }
+    .galeria-motos img {
+        width: 98vw;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.galeria-motos {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.galeria-motos img {
+    width: 260px;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: transform 0.2s;
+    margin-bottom: 10px;
+}
+
+.galeria-motos img:hover {
+    transform: scale(1.08);
 }
